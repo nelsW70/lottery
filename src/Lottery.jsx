@@ -4,13 +4,13 @@ import Ball from './Ball';
 class Lottery extends Component {
   static defaultProps = {
     title: 'Lotto',
-    maxBalls: 6,
+    numBalls: 6,
     maxNum: 40
   };
 
   constructor(props) {
     super(props);
-    this.state = { nums: Array.from({ length: this.props.maxBalls }) };
+    this.state = { nums: Array.from({ length: this.props.numBalls }) };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -31,8 +31,8 @@ class Lottery extends Component {
       <section className="Lottery">
         <h1>{this.props.title}</h1>
         <div>
-          {this.state.nums.map(n => (
-            <Ball num={n} />
+          {this.state.nums.map((n, index) => (
+            <Ball num={n} key={index} />
           ))}
         </div>
         <button onClick={this.handleClick}>Generate</button>
